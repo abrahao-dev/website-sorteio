@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark"> <!-- Inicia em modo escuro por padrão -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio de Nomes com Auditoria</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="main-panel">
+            <header class="flex items-center justify-between gap-4 mb-8">
+                <div class="flex items-center gap-4">
+                    <div class="logo rounded-lg w-12 h-12 flex items-center justify-center text-2xl font-bold">Aa</div>
+                    <h1 class="text-3xl font-bold">Sorteio de nomes</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="#" id="how-it-works-link" class="text-sm font-medium transition hover:text-indigo-400">Como funciona?</a>
+                    <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-lg transition">
+                        <!-- Icons will be injected by JS -->
+                    </button>
+                </div>
+            </header>
+
+            <main id="main-content">
+                <!-- TELA DE CONFIGURAÇÃO DO SORTEIO -->
+                <div id="setup-screen">
+                    <div class="flex items-center justify-center gap-3 text-2xl mb-6">
+                        <label for="quantity">Sortear</label>
+                        <input type="number" id="quantity" value="1" min="1" class="p-2 rounded-md">
+                        <span>nome(s)</span>
+                    </div>
+
+                    <textarea id="name-input" rows="8" class="w-full p-4 rounded-md text-lg" placeholder="Separe os nomes por linha ou vírgula"></textarea>
+
+                    <label for="csv-upload" class="csv-upload-label">
+                        Para carregar a lista de um arquivo .csv, clique aqui
+                    </label>
+                    <input type="file" id="csv-upload" accept=".csv" class="hidden">
+
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg">Animação contagem regressiva</span>
+                            <label class="switch">
+                                <input type="checkbox" id="animation-toggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg">Não repetir nome</span>
+                            <label class="switch">
+                                <input type="checkbox" id="no-repeat-toggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="draw-button" class="mt-8 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-4 rounded-lg text-xl transition flex items-center justify-center gap-2">
+                        Sortear
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+
+                <!-- TELA DE RESULTADOS DO SORTEIO -->
+                <div id="result-screen" class="hidden">
+                     <div class="flex justify-between items-center mb-6">
+                        <div></div> <!-- Espaçador -->
+                        <p id="total-names-info" class="text-muted text-lg"></p>
+                    </div>
+
+                    <div id="result-display" class="space-y-4">
+                        <!-- Os resultados serão inseridos aqui via JavaScript -->
+                    </div>
+
+                    <div id="draw-again-controls" class="mt-8 flex flex-col items-center">
+                        <button id="download-log-button" class="w-full mb-4 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg text-lg transition flex items-center justify-center gap-2">
+                           Salvar Registro (.txt)
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        </button>
+                        <div class="flex items-center justify-center gap-3 text-2xl mb-6">
+                            <label for="quantity-result">Sortear</label>
+                            <input type="number" id="quantity-result" value="1" min="1" class="p-2 rounded-md">
+                            <span>nome(s)</span>
+                        </div>
+                         <button id="draw-again-button" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-4 rounded-lg text-xl transition flex items-center justify-center gap-2">
+                            Sortear de novo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                        <a href="#" id="back-link" class="mt-6 transition">&lt; Voltar</a>
+                    </div>
+                </div>
+
+                <!-- OVERLAY DE CONTAGEM REGRESSIVA -->
+                <div id="countdown-overlay" class="hidden fixed inset-0 bg-gray-900 bg-opacity-80 z-[9999] flex items-center justify-center">
+                    <div id="countdown-timer" class="font-bold text-white">3</div>
+                </div>
+            </main>
+        </div>
+
+        <!-- PAINEL DE HISTÓRICO DE SORTEADOS -->
+        <aside id="history-panel" class="history-panel hidden">
+            <div class="flex-grow">
+                <h2 class="text-2xl font-bold mb-6 text-center">🏆 Histórico de Sorteados 🏆</h2>
+                <div id="history-list" class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+                    <!-- Histórico será inserido aqui -->
+                </div>
+            </div>
+            <button id="clear-history-button" class="mt-6 w-full bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                Limpar Histórico
+            </button>
+        </aside>
+
+    </div>
+
+    <!-- MODAIS -->
+    <div id="modal-overlay" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-4">
+        <div id="modal-box" class="rounded-lg shadow-xl p-6 w-full max-w-lg text-left">
+            <h3 id="modal-title" class="text-xl font-bold mb-4"></h3>
+            <div id="modal-message" class="text-muted mb-6 space-y-4"></div>
+            <div id="modal-buttons" class="flex justify-end gap-4">
+                <!-- Botões do modal serão inseridos aqui -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center p-8 text-sm">
+        Desenvolvido com ❤️ por <a href="https://www.abrahaolabs.com.br" target="_blank" rel="noopener noreferrer" class="font-bold underline hover:text-indigo-400 transition">Abrahao Labs</a>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

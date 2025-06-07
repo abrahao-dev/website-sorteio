@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-dark: #111827;
+    --bg-light: #f9fafb;
+    --text-dark: #F9FAFB;
+    --text-light: #111827;
+    --panel-bg-dark: #1F2937;
+    --panel-bg-light: #ffffff;
+    --border-dark: #374151;
+    --border-light: #e5e7eb;
+    --primary-accent: #A78BFA;
+    --primary-accent-darker: #8B5CF6;
+    --primary-btn: #4F46E5;
+    --primary-btn-hover: #4338CA;
+    --text-muted-dark: #9ca3af;
+    --text-muted-light: #6b7280;
+}
+
+/* Tema Escuro (Padrão) */
+html.dark body { background-color: var(--bg-dark); color: var(--text-dark); }
+html.dark .main-panel, html.dark .history-panel { background-color: transparent; }
+html.dark .panel-content { background-color: var(--panel-bg-dark); border-color: var(--border-dark); }
+html.dark textarea, html.dark input[type="number"] { background-color: var(--panel-bg-dark); border-color: var(--border-dark); }
+html.dark textarea:focus, html.dark input[type="number"]:focus { border-color: var(--primary-accent); }
+html.dark .switch .slider { background-color: var(--border-dark); }
+html.dark input:checked + .slider { background-color: var(--primary-btn); }
+html.dark .csv-upload-label { color: var(--primary-accent); }
+html.dark .csv-upload-label:hover { color: var(--primary-accent-darker); }
+html.dark a, html.dark .text-muted { color: var(--text-muted-dark); }
+html.dark a:hover { color: var(--text-dark); }
+html.dark #modal-box { background-color: var(--panel-bg-dark); border-color: var(--border-dark); }
+html.dark #history-panel { background-color: var(--panel-bg-dark); }
+html.dark .history-item { background-color: #374151; }
+html.dark .history-id { border-color: var(--border-dark); }
+html.dark .winner-card { background-color: #1f2937; border-color: #374151; }
+html.dark .winner-name { color: #c4b5fd; }
+html.dark .footer { color: var(--text-muted-dark); }
+
+/* Tema Claro */
+html.light body { background-color: var(--bg-light); color: var(--text-light); }
+html.light .main-panel, html.light .history-panel { background-color: transparent; }
+html.light .panel-content { background-color: var(--panel-bg-light); border-color: var(--border-light); }
+html.light textarea, html.light input[type="number"] { background-color: var(--panel-bg-light); border-color: var(--border-light); }
+html.light textarea:focus, html.light input[type="number"]:focus { border-color: var(--primary-accent-darker); }
+html.light .switch .slider { background-color: #e5e7eb; }
+html.light input:checked + .slider { background-color: var(--primary-btn); }
+html.light .csv-upload-label { color: var(--primary-btn); }
+html.light .csv-upload-label:hover { color: var(--primary-btn-hover); }
+html.light a, html.light .text-muted { color: var(--text-muted-light); }
+html.light a:hover { color: var(--text-light); }
+html.light #modal-box { background-color: var(--panel-bg-light); border-color: var(--border-light); }
+html.light #history-panel { background-color: var(--panel-bg-light); }
+html.light .history-item { background-color: #f3f4f6; }
+html.light .history-id { border-color: var(--border-light); }
+html.light .winner-card { background-color: #f9fafb; border-color: #e5e7eb; }
+html.light .winner-name { color: #6d28d9; }
+html.light .footer { color: var(--text-muted-light); }
+
+body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+.app-wrapper { max-width: 1200px; margin: 2rem auto; padding: 1rem; }
+.logo { background-color: var(--primary-accent); color: var(--bg-dark); }
+#countdown-timer { animation: pulse 1s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+#modal-overlay { background-color: rgba(0, 0, 0, 0.7); }
