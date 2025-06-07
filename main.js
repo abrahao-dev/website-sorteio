@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Detecção de dispositivo mobile
   const isMobile = window.innerWidth < 640;
-  
+
   // Função para ajustar a UI com base no tamanho da tela
   function adjustUIForScreenSize() {
     const isMobileView = window.innerWidth < 640;
-    
+
     // Ajustar altura máxima da lista de histórico
     historyList.style.maxHeight = isMobileView ? '300px' : '500px';
-    
+
     // Ajustar número de linhas do textarea com base no tamanho da tela
     nameInput.rows = isMobileView ? 6 : 8;
   }
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function launchConfetti() {
     // Ajuste da origem do confetti com base no tamanho da tela
     const isMobile = window.innerWidth < 640;
-    
+
     confetti({
       particleCount: isMobile ? 70 : 100,  // Menos partículas em dispositivos móveis
       spread: isMobile ? 50 : 70,          // Menor espalhamento em dispositivos móveis
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sempre manter o painel de histórico visível
     historyPanel.classList.remove('hidden');
     historyList.innerHTML = '';
-    
+
     // Se não houver histórico, exibir uma mensagem informativa
     if (history.length === 0) {
       const emptyMessage = document.createElement('div');
@@ -362,13 +362,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- FUNÇÃO PARA COPIAR LISTA DE NOMES ---
   function copyNamesList() {
     const namesList = `Adriana de Oliveira da Silva, Adilson Rolim Junior, Amanda Oliveira Sarti, Ana Caroline de Camargo Francisco, Ana Caroline de Godoy, Ana Paula Alves de Oliveira, Ana Paula Porto, André Luiz Bueno, Andressa de Andrade Silva, Beatriz Clares Cardoso, Beatriz Machado Santos, Beatriz Santos Fernandes, Bruno Henrique Bueno dos Santos, Cauane Boggi Morais, Danieli Benediti Bragion, Elivyn Andressa dos Santos Borges, Eric Osti Spinelli, Felipe Traldi de Oliveira, Fernanda Lindner de Campos, Gabby Boggi Morais, Gabriel Dias Longo, Gabriela Bernardi, Gabriela da Silva Teixeira Jacob, Gabriela Simoni, Giovana Franciscon, Giovanna Azevedo Alexandroni, Guilherme Aurelio Duarte, Henrique Isac Rodrigues dos Reis, Isabela Lopes dos Santos, Julia Ribeiro de Moura, Juliana Gonçalves da Silva, Kellen Cristina Lopes Cubero, Lais Vieira da Silva Bueno, Letícia Oshiro de Rezende Teixeira, Letícia Tammy Takahashi Inui, Lorena Maria Prado Zupardo, Luísa dos Anjos Bahia, Marcela Forni Carneiro, Marcelo Acácio da Silva, Maria Camila Lambert de Melo, Maria Valentina Schierano, Matheus Peres de Lima, Mayza Marcelina Tavares, Michele de Faria Parizatto Lopes, Murilo Trevine Consoline, Nathalia Dentello Grespan, Nelsa Akemi Ishimoto, Oscar Cardoso Neto, Pedro Augusto Dutra, Pietra Godoy Guarani, Raul Pereira Mendes, Rebeca Teles Candido, Renata Salles Barbosa Bueno, Sabrina Graziely Ferreira Silva, Talia Rafaela dos Santos Tanajura, Tamily Vitória da Rocha Lima Cerca, Thaís de Lima Moncler Santos, Tiffany de Souza Rodrigues, Victor Mariano dos Santos Moreira, Vitória Bidóia da Silva, Vitória Gabriele Pedroso, Yasmin Moraes Azevedo Souza, Carolina Vitória Santos, Giovanna Dorini, Hellen Rizia, Patrícia Jorge, Natiely Oliveira, Manuela Longo, Renata Bulhões, Vinicius Quinteiro.`;
-    
+
     navigator.clipboard.writeText(namesList).then(() => {
       // Alterar texto do botão para dar feedback
       const copyButtonText = document.getElementById('copy-button-text');
       const originalText = copyButtonText.textContent;
       copyButtonText.textContent = 'Copiado! ✓';
-      
+
       // Restaurar o texto original após 2 segundos
       setTimeout(() => {
         copyButtonText.textContent = originalText;
@@ -383,10 +383,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme') || 'dark';
   applyTheme(savedTheme);
   loadHistoryFromLocalStorage();
-  
+
   // Aplicar ajustes responsivos iniciais
   adjustUIForScreenSize();
-  
+
   // Ajustar UI quando a tela for redimensionada
   window.addEventListener('resize', adjustUIForScreenSize);
 
@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   themeToggle.addEventListener('click', handleThemeToggle);
-  
+
   // Event listener para o botão de copiar lista de nomes
   const copyNamesButton = document.getElementById('copy-names-button');
   if (copyNamesButton) {
