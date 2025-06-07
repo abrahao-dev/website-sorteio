@@ -20,6 +20,10 @@
   --primary-accent-darker: #8B5CF6;
   --primary-btn: #4F46E5;
   --primary-btn-hover: #4338CA;
+  
+  /* Espaçamentos responsivos */
+  --card-padding-desktop: 2rem;
+  --card-padding-mobile: 1rem;
 }
 
 /* Aplicação de Tema */
@@ -41,9 +45,15 @@ body {
 .card {
   border-radius: 0.75rem;
   border: 1px solid;
-  padding: 2rem;
+  padding: var(--card-padding-mobile);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, border-color 0.3s;
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: var(--card-padding-desktop);
+  }
 }
 
 html.dark .card {
@@ -58,8 +68,15 @@ html.light .card {
 
 .app-wrapper {
   max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1rem;
+  margin: 1rem auto;
+  padding: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .app-wrapper {
+    margin: 2rem auto;
+    padding: 1rem;
+  }
 }
 
 .logo {
@@ -172,4 +189,58 @@ html.light .winner-name {
 
 #modal-overlay {
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 640px) {
+  #countdown-timer {
+    font-size: 8rem;
+  }
+  
+  .history-item {
+    padding: 0.75rem;
+  }
+  
+  #history-list {
+    max-height: 300px;
+  }
+  
+  .winner-card {
+    padding: 1rem;
+  }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 380px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .card {
+    padding: 0.75rem;
+  }
+  
+  #countdown-timer {
+    font-size: 6rem;
+  }
+}
+
+/* Fix para botões em tela pequena */
+@media (max-width: 640px) {
+  #draw-button, 
+  #draw-again-button, 
+  #download-log-button {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .flex.items-center.justify-center.gap-3.text-2xl {
+    gap: 0.5rem;
+    font-size: 1.25rem;
+  }
+  
+  input[type="number"] {
+    width: 60px;
+  }
 }

@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Detecção de dispositivo mobile
+  const isMobile = window.innerWidth < 640;
+  
+  // Função para ajustar a UI com base no tamanho da tela
+  function adjustUIForScreenSize() {
+    const isMobileView = window.innerWidth < 640;
+    
+    // Ajustar altura máxima da lista de histórico
+    historyList.style.maxHeight = isMobileView ? '300px' : '500px';
+    
+    // Ajustar número de linhas do textarea com base no tamanho da tela
+    nameInput.rows = isMobileView ? 6 : 8;
+  }
   // --- SELEÇÃO DE ELEMENTOS DO DOM ---
   const setupScreen = document.getElementById('setup-screen');
   const resultScreen = document.getElementById('result-screen');
@@ -191,12 +204,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function launchConfetti() {
+    // Ajuste da origem do confetti com base no tamanho da tela
+    const isMobile = window.innerWidth < 640;
+    
     confetti({
-      particleCount: 150,
-      spread: 90,
-      origin: {
-        y: 0.6
-      }
+      particleCount: isMobile ? 70 : 100,  // Menos partículas em dispositivos móveis
+      spread: isMobile ? 50 : 70,          // Menor espalhamento em dispositivos móveis
+      origin: { y: isMobile ? 0.5 : 0.6 },  // Origem um pouco mais alta em dispositivos móveis
+      colors: ['#4F46E5', '#A78BFA', '#C4B5FD']
     });
   }
 
@@ -293,15 +308,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sempre manter o painel de histórico visível
     historyPanel.classList.remove('hidden');
     historyList.innerHTML = '';
-
+    
     // Se não houver histórico, exibir uma mensagem informativa
     if (history.length === 0) {
       const emptyMessage = document.createElement('div');
-      emptyMessage.className = 'text-center py-6';
+      emptyMessage.className = 'text-center py-4 sm:py-6';
       emptyMessage.innerHTML = `
-                <p class="text-lg mb-2">Nenhum sorteio realizado ainda</p>
-                <p class="text-sm text-muted">Os resultados aparecerão aqui</p>
-            `;
+          <p class="text-base sm:text-lg mb-2">Nenhum sorteio realizado ainda</p>
+          <p class="text-xs sm:text-sm text-muted">Os resultados aparecerão aqui</p>
+      `;
       historyList.appendChild(emptyMessage);
       return;
     }
@@ -328,11 +343,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const historyItemHTML = `
-                    <div class="history-item p-3 rounded-md flex items-center gap-3 mt-2">
+                    <div class="history-item p-2 sm:p-3 rounded-md flex items-center gap-2 sm:gap-3 mt-2">
                         <span class="text-lg font-semibold text-muted">${winnerCount}º</span>
                         <span class="text-xl">🎁</span>
                         <div class="flex-grow">
-                            <p class="font-bold text-lg">${winner}</p>
+                            <p class="font-bold text-base sm:text-lg">${winner}</p>
                             <p class="text-xs text-muted">${date} às ${time}</p>
                         </div>
                     </div>
@@ -348,6 +363,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme') || 'dark';
   applyTheme(savedTheme);
   loadHistoryFromLocalStorage();
+  
+  // Aplicar ajustes responsivos iniciais
+  adjustUIForScreenSize();
+  
+  // Ajustar UI quando a tela for redimensionada
+  window.addEventListener('resize', adjustUIForScreenSize);
 
   drawButton.addEventListener('click', performDraw);
   csvUpload.addEventListener('change', handleFileUpload);

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sorteio de Nomes com Auditoria</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,15 +15,15 @@
 </head>
 
 <body class="antialiased">
-    <div class="app-wrapper grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="main-panel lg:col-span-2">
-            <header class="flex items-center justify-between gap-4 mb-6">
-                <div class="flex items-center gap-4">
+    <div class="app-wrapper grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        <div class="main-panel md:col-span-2">
+            <header class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
+                <div class="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-0">
                     <div
                         class="logo rounded-lg w-12 h-12 flex items-center justify-center text-2xl font-bold flex-shrink-0">
                         Aa</div>
                     <div>
-                        <h1 class="text-2xl sm:text-3xl font-bold">Sorteio de nomes</h1>
+                        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold">Sorteio de nomes</h1>
                         <p class="text-muted text-sm">Ferramenta gratuita e segura para seus eventos.</p>
                     </div>
                 </div>
@@ -38,15 +38,15 @@
 
             <main id="main-content" class="card">
                 <!-- TELA DE CONFIGURAÇÃO DO SORTEIO -->
-                <div id="setup-screen" class="flex flex-col items-center">
-                    <div class="flex items-center justify-center gap-3 text-2xl mb-6">
+                <div id="setup-screen" class="flex flex-col items-center w-full">
+                    <div class="flex items-center justify-center gap-2 sm:gap-3 text-xl sm:text-2xl mb-4 sm:mb-6">
                         <label for="quantity">Sortear</label>
                         <input type="number" id="quantity" value="1" min="1"
                             class="p-2 rounded-md border text-center transition">
                         <span>nome(s)</span>
                     </div>
 
-                    <div class="w-full max-w-md">
+                    <div class="w-full max-w-md px-2 sm:px-0">
                         <textarea id="name-input" rows="8"
                             class="w-full p-4 rounded-md text-lg transition border"></textarea>
                     </div>
@@ -89,7 +89,7 @@
                 </div>
 
                 <!-- TELA DE RESULTADOS DO SORTEIO -->
-                <div id="result-screen" class="hidden">
+                <div id="result-screen" class="hidden w-full">
                     <div class="flex justify-between items-center mb-6">
                         <div></div> <!-- Espaçador -->
                         <p id="total-names-info" class="text-muted text-lg"></p>
@@ -110,7 +110,7 @@
                                 <polyline points="7 10 12 15 17 10" />
                                 <line x1="12" x2="12" y1="15" y2="3" /></svg>
                         </button>
-                        <div class="flex items-center justify-center gap-3 text-2xl my-6">
+                        <div class="flex items-center justify-center gap-2 sm:gap-3 text-xl sm:text-2xl my-4 sm:my-6">
                             <label for="quantity-result">Sortear</label>
                             <input type="number" id="quantity-result" value="1" min="1"
                                 class="p-2 rounded-md border text-center">
@@ -131,7 +131,7 @@
         </div>
 
         <!-- PAINEL DE HISTÓRICO DE SORTEADOS (SEMPRE VISÍVEL) -->
-        <aside id="history-panel" class="card">
+        <aside id="history-panel" class="card mt-4 md:mt-0">
             <div class="flex flex-col h-full">
                 <div class="flex-grow">
                     <h2 class="text-2xl font-bold mb-6 text-center">🏆 Histórico de Sorteados</h2>
@@ -155,7 +155,7 @@
     </div>
 
     <!-- MODAIS E OVERLAYS -->
-    <div id="modal-overlay" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-4">
+    <div id="modal-overlay" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-2 sm:p-4">
         <div id="modal-box" class="card w-full max-w-lg text-left">
             <h3 id="modal-title" class="text-xl font-bold mb-4"></h3>
             <div id="modal-message" class="text-muted mb-6 space-y-4"></div>
@@ -165,8 +165,8 @@
         </div>
     </div>
     <div id="countdown-overlay"
-        class="hidden fixed inset-0 bg-black bg-opacity-80 z-[9999] flex items-center justify-center">
-        <div id="countdown-timer" class="font-bold text-white text-9xl md:text-[15rem]">3</div>
+        class="hidden fixed inset-0 bg-black bg-opacity-80 z-[9999] flex items-center justify-center overflow-hidden">
+        <div id="countdown-timer" class="font-bold text-white text-8xl sm:text-9xl md:text-[15rem]">3</div>
     </div>
 
     <footer class="text-center p-8 text-sm">
