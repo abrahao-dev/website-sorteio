@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://website-sorteio-2e0seiykq-matheus-projects-a9cc9784.vercel.app/sitemap.xml

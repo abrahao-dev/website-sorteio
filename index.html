@@ -5,26 +5,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sorteio de Nomes com Auditoria</title>
+    
+    <!-- SEO Meta Tags Principais -->
+    <title>Sorteador Online Grátis | Sorteio de Nomes Seguro | Abrahao Labs</title>
+    <meta name="description" content="Sorteio online grátis e seguro para eventos, promoções e concursos. Ferramenta de sorteio transparente com resultados auditáveis desenvolvida pela Abrahao Labs.">
+    <meta name="keywords" content="sorteio online, sortear nomes, ferramenta de sorteio, sorteador, sorteio grátis, sorteio para instagram, sorteio seguro, sorteador de nomes, Abrahao Labs">
+    <meta name="author" content="Abrahao Labs">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://website-sorteio-2e0seiykq-matheus-projects-a9cc9784.vercel.app/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://website-sorteio-2e0seiykq-matheus-projects-a9cc9784.vercel.app/">
+    <meta property="og:title" content="Sorteador Online Grátis | Ferramenta de Sorteio Profissional">
+    <meta property="og:description" content="Realize sorteios online de forma transparente e segura. Ideal para eventos, promoções e concursos. Desenvolvido pela Abrahao Labs.">
+    <meta property="og:image" content="https://website-sorteio-2e0seiykq-matheus-projects-a9cc9784.vercel.app/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://website-sorteio-2e0seiykq-matheus-projects-a9cc9784.vercel.app/">
+    <meta property="twitter:title" content="Sorteador Online Grátis | Ferramenta de Sorteio Profissional">
+    <meta property="twitter:description" content="Realize sorteios online de forma transparente e segura. Ideal para eventos, promoções e concursos. Desenvolvido pela Abrahao Labs.">
+    <meta property="twitter:image" content="https://website-sorteio-2e0seiykq-matheus-projects-a9cc9784.vercel.app/images/og-image.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Confetti JS -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Sorteador Online Grátis",
+      "url": "https://website-sorteio-2e0seiykq-matheus-projects-a9cc9784.vercel.app/",
+      "description": "Ferramenta online gratuita para realizar sorteios de nomes de forma transparente e segura.",
+      "applicationCategory": "UtilityApplication",
+      "genre": "sorteio, eventos, promoção",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Abrahao Labs",
+        "url": "https://www.abrahaolabs.com.br"
+      },
+      "screenshot": "https://website-sorteio-2e0seiykq-matheus-projects-a9cc9784.vercel.app/images/og-image.svg"
+    }
+    </script>
 </head>
 
 <body class="antialiased">
-    <div class="app-wrapper grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+    <div class="app-wrapper grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8" itemscope itemtype="https://schema.org/WebApplication">
         <div class="main-panel md:col-span-2">
             <header class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
                 <div class="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-0">
-                    <div
-                        class="logo rounded-lg w-12 h-12 flex items-center justify-center text-2xl font-bold flex-shrink-0">
+                    <div class="logo rounded-lg w-12 h-12 flex items-center justify-center text-2xl font-bold flex-shrink-0" aria-label="Logo Sorteio Online">
                         Aa</div>
                     <div>
-                        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold">Sorteio de nomes</h1>
-                        <p class="text-muted text-sm">Ferramenta gratuita e segura para seus eventos.</p>
+                        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold" itemprop="name">Sorteador Online de Nomes</h1>
+                        <p class="text-muted text-sm" itemprop="description">Ferramenta gratuita e segura para sorteios, promoções e eventos.</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-4 flex-shrink-0">
@@ -169,13 +219,31 @@
         <div id="countdown-timer" class="font-bold text-white text-8xl sm:text-9xl md:text-[15rem]">3</div>
     </div>
 
-    <footer class="text-center p-8 text-sm space-y-4">
-        <div>
-            <a href="https://www.abrahaolabs.com.br" target="_blank" rel="noopener noreferrer"
-                class="font-bold underline transition text-muted hover:text-indigo-400">Desenvolvido por Abrahao
-                Labs</a>
+    <footer class="text-center p-8 text-sm space-y-6">
+        <div class="abrahao-labs-banner bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-4 max-w-lg mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-3 text-white">
+                <img src="https://abrahaolabs.com.br/logo-icon.png" alt="Abrahao Labs Logo" width="40" height="40" class="rounded-full" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23673ab7%22/%3E%3Ctext x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22 fill=%22white%22%3EA%3C/text%3E%3C/svg%3E'; this.onerror=null;">
+                <div class="text-center md:text-left">
+                    <h3 class="font-bold text-lg">Abrahao Labs</h3>
+                    <p class="text-sm font-medium">Agência de Marketing & Software House</p>
+                </div>
+                <a href="https://www.abrahaolabs.com.br" target="_blank" rel="noopener noreferrer" class="bg-white text-indigo-600 font-bold py-1 px-4 rounded-full transition hover:bg-opacity-90">Conheça</a>
+            </div>
+        </div>
+        <div class="mt-4">
+            <p class="mb-2">Ferramenta gratuita desenvolvida por <a href="https://www.abrahaolabs.com.br" target="_blank" rel="noopener noreferrer" class="font-bold underline transition hover:text-indigo-400" itemprop="provider">Abrahao Labs</a></p>
+            <p class="text-xs text-muted">© 2025 Abrahao Labs - Todos os direitos reservados</p>
         </div>
     </footer>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX'); // Substitua pelo seu ID do Google Analytics
+    </script>
 
     <script src="main.js"></script>
 </body>

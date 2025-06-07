@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="url(#gradient)" />
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Logo e Texto -->
+  <g transform="translate(120, 220)">
+    <!-- Logo Circle -->
+    <circle cx="60" cy="60" r="60" fill="white" />
+    <text x="60" y="75" font-family="Arial, sans-serif" font-size="50" fill="#4f46e5" text-anchor="middle" font-weight="bold">Aa</text>
+    
+    <!-- Texto Principal -->
+    <text x="140" y="50" font-family="Arial, sans-serif" font-size="60" fill="white" font-weight="bold">Sorteador Online Grátis</text>
+    <text x="140" y="120" font-family="Arial, sans-serif" font-size="36" fill="white" opacity="0.9">Ferramenta para sorteios auditáveis e transparentes</text>
+  </g>
+  
+  <!-- Abrahao Labs -->
+  <g transform="translate(120, 450)">
+    <rect width="960" height="80" rx="40" ry="40" fill="white" opacity="0.2" />
+    <text x="480" y="50" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" font-weight="bold">Desenvolvido por Abrahao Labs • Agência de Marketing & Software House</text>
+  </g>
+  
+  <!-- Elementos Decorativos -->
+  <g opacity="0.1">
+    <circle cx="950" cy="100" r="40" fill="white" />
+    <circle cx="1020" cy="180" r="30" fill="white" />
+    <circle cx="1050" cy="80" r="20" fill="white" />
+    <circle cx="100" cy="550" r="30" fill="white" />
+    <circle cx="180" cy="580" r="20" fill="white" />
+  </g>
+</svg>
