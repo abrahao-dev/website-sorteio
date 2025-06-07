@@ -359,6 +359,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- FUNÇÃO PARA COPIAR LISTA DE NOMES ---
+  function copyNamesList() {
+    const namesList = `Adriana de Oliveira da Silva, Adilson Rolim Junior, Amanda Oliveira Sarti, Ana Caroline de Camargo Francisco, Ana Caroline de Godoy, Ana Paula Alves de Oliveira, Ana Paula Porto, André Luiz Bueno, Andressa de Andrade Silva, Beatriz Clares Cardoso, Beatriz Machado Santos, Beatriz Santos Fernandes, Bruno Henrique Bueno dos Santos, Cauane Boggi Morais, Danieli Benediti Bragion, Elivyn Andressa dos Santos Borges, Eric Osti Spinelli, Felipe Traldi de Oliveira, Fernanda Lindner de Campos, Gabby Boggi Morais, Gabriel Dias Longo, Gabriela Bernardi, Gabriela da Silva Teixeira Jacob, Gabriela Simoni, Giovana Franciscon, Giovanna Azevedo Alexandroni, Guilherme Aurelio Duarte, Henrique Isac Rodrigues dos Reis, Isabela Lopes dos Santos, Julia Ribeiro de Moura, Juliana Gonçalves da Silva, Kellen Cristina Lopes Cubero, Lais Vieira da Silva Bueno, Letícia Oshiro de Rezende Teixeira, Letícia Tammy Takahashi Inui, Lorena Maria Prado Zupardo, Luísa dos Anjos Bahia, Marcela Forni Carneiro, Marcelo Acácio da Silva, Maria Camila Lambert de Melo, Maria Valentina Schierano, Matheus Peres de Lima, Mayza Marcelina Tavares, Michele de Faria Parizatto Lopes, Murilo Trevine Consoline, Nathalia Dentello Grespan, Nelsa Akemi Ishimoto, Oscar Cardoso Neto, Pedro Augusto Dutra, Pietra Godoy Guarani, Raul Pereira Mendes, Rebeca Teles Candido, Renata Salles Barbosa Bueno, Sabrina Graziely Ferreira Silva, Talia Rafaela dos Santos Tanajura, Tamily Vitória da Rocha Lima Cerca, Thaís de Lima Moncler Santos, Tiffany de Souza Rodrigues, Victor Mariano dos Santos Moreira, Vitória Bidóia da Silva, Vitória Gabriele Pedroso, Yasmin Moraes Azevedo Souza, Carolina Vitória Santos, Giovanna Dorini, Hellen Rizia, Patrícia Jorge, Natiely Oliveira, Manuela Longo, Renata Bulhões, Vinicius Quinteiro.`;
+    
+    navigator.clipboard.writeText(namesList).then(() => {
+      // Alterar texto do botão para dar feedback
+      const copyButtonText = document.getElementById('copy-button-text');
+      const originalText = copyButtonText.textContent;
+      copyButtonText.textContent = 'Copiado! ✓';
+      
+      // Restaurar o texto original após 2 segundos
+      setTimeout(() => {
+        copyButtonText.textContent = originalText;
+      }, 2000);
+    }).catch(err => {
+      console.error('Erro ao copiar texto: ', err);
+      alert('Não foi possível copiar o texto. Por favor, tente novamente.');
+    });
+  }
+
   // --- INICIALIZAÇÃO E EVENT LISTENERS ---
   const savedTheme = localStorage.getItem('theme') || 'dark';
   applyTheme(savedTheme);
@@ -406,6 +426,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   themeToggle.addEventListener('click', handleThemeToggle);
+  
+  // Event listener para o botão de copiar lista de nomes
+  const copyNamesButton = document.getElementById('copy-names-button');
+  if (copyNamesButton) {
+    copyNamesButton.addEventListener('click', copyNamesList);
+  }
 
   howItWorksLink.addEventListener('click', (e) => {
     e.preventDefault();
